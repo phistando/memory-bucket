@@ -41,11 +41,11 @@ var userSchema = new Schema ({
 
 userSchema.statics.encrypt = function(password){
   return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
-}
+};
 
 userSchema.methods.validPassword = function(password) {
   return bcrypt.compareSync(password, this.password);
-}
+};
 
 // userSchema.pre('save', function(next) {
 //   var user = this;

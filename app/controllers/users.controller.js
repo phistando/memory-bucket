@@ -14,6 +14,11 @@ function showUserBucket(req, res) {
   res.render('user/userBucketPage', { message: req.flash('erroMessage')});
 }
 
+function profile(req, res) {
+  console.log('req.user: ' + req.user);
+  res.render('user/profile', { message: req.flash('erroMessage'), user: req.user  });
+}
+
 function user_by_id(req, res, next, id) {
   User.findOne({_id: id}, function (err, user) {
     if (err) {
@@ -26,14 +31,6 @@ function user_by_id(req, res, next, id) {
 }
 
 
-
-
-
-
-
-
-
-
 // GET /signup
 function getSignup(req, res) {
   res.render('user/signup', { message: req.flash('errorMessage') });
@@ -42,7 +39,7 @@ function getSignup(req, res) {
 // POST /signup
 function postSignup(req, res) {
   var signupStrategy = passport.authenticate('local-signup', {
-    successRedirect: "/:user_id",
+    successRedirect: "/profile",
     failureRedirect: "/signup",
     failureFlash: true
   });
@@ -58,7 +55,7 @@ function getLogin(req, res) {
 // POST /login
 function postLogin(req, res) {
   var loginStrategy = passport.authenticate('local-login', {
-    successRedirect: "/:user_id",
+    successRedirect: "/profile",
     failureRedirect: "/login",
     failureFlash: true
   });
@@ -82,5 +79,6 @@ module.exports = {
   getLogout: getLogout,
   // userBucketPage: userBucketPage
   showUserBucket: showUserBucket,
+  profile: profile,
   user_by_id: user_by_id
 };

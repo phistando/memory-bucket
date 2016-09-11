@@ -1,6 +1,3 @@
-// var jwt_secret = 'somerandomsuperlongpasswordthatnooneknows';
-
-
 var express = require('express'),
     config = require('./config'),
     morgan = require('morgan'),
@@ -32,16 +29,18 @@ module.exports = function() {
 
   app.use(bodyParser.json());
   app.use(methodOverride());
-
-
-  // Setup middleware
-  app.use(morgan('dev'));
   app.use(cookieParser());
-  app.use(bodyParser());
+
   app.use(ejsLayouts);
 
   // use express.session() before passport.session() to ensure that the login session is restored in the correct order
-  app.use(session({ secret: 'WDI-GENERAL-ASSEMBLY-EXPRESS' }));
+  // Configure the 'session' middleware
+  app.use(session({
+    saveUninitialized: true,
+    resave: true,
+    secret: 'WDI-GENERAL-ASSEMBLY-EXPRESS'
+  }));
+
   // passport.initialize() middleware is required to initialize Passport.
   app.use(passport.initialize());
   // If your application uses persistent login sessions, passport.session()
