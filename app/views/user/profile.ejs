@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">MemoryBucket</a>
+      <a class="navbar-brand" href="/userpublic">MemoryBucket</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -30,7 +30,7 @@
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="/userhomepage">My Bucket </a></li>
+        <li><a href="/profile">My Bucket </a></li>
         <li><a href="/logout">Logout </a></li>
 
       </ul>
@@ -50,12 +50,12 @@ body {color: green;}
   <!-- LOCAL INFORMATION -->
   <div class="col-sm-6">
     <div class="well">
-      <h3><span class="fa fa-user"></span> Logged in user</h3>
+      <h3><span class="fa fa-user"></span>Logged in user</h3>
       <p>
-          <strong>id</strong>: <%= user._id %><br>
+          <!-- <strong>id</strong>: <%= user._id %><br> -->
           <strong>username</strong>: <%= user.username %><br>
           <strong>email</strong>: <%= user.email %><br>
-          <strong>password</strong>: <%= user.password %>
+          <!-- <strong>password</strong>: <%= user.password %> -->
       </p>
     </div>
   </div>

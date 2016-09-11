@@ -2,32 +2,17 @@ var User = require('mongoose').model('User'),
     passport = require("passport");
 
 
-//Get /userbucketpage
-// function userBucketPage(req, res) {
-//   res.render('user/userBucketPage', { message: req.flash('errorMessage') });
-// }
 
 
-
-//Get /:user_id
-function showUserBucket(req, res) {
-  res.render('user/userBucketPage', { message: req.flash('erroMessage')});
-}
-
+//Get /profile
 function profile(req, res) {
   console.log('req.user: ' + req.user);
   res.render('user/profile', { message: req.flash('erroMessage'), user: req.user  });
 }
 
-function user_by_id(req, res, next, id) {
-  User.findOne({_id: id}, function (err, user) {
-    if (err) {
-      return next(err);
-    } else {
-      req.user = user;
-      next();
-    }
-  });
+//Get /userpublic
+function userPublic(req, res) {
+  res.render('user/userpublic', { message: req.flash('erroMessage'), user: req.user  });
 }
 
 
@@ -77,8 +62,6 @@ module.exports = {
   getSignup: getSignup,
   postSignup: postSignup,
   getLogout: getLogout,
-  // userBucketPage: userBucketPage
-  showUserBucket: showUserBucket,
   profile: profile,
-  user_by_id: user_by_id
+  userPublic: userPublic
 };

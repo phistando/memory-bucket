@@ -38,17 +38,10 @@ app.route("/logout")
   .get(usersController.getLogout);
 
 
-// app.route("/userbucketpage")
-//   .get(authenticatedUser, usersController.userBucketPage);
-
 app.route('/profile')
     .get(usersController.profile);
 
-
-app.route('/:user_id')
-    .get(authenticatedUser, usersController.showUserBucket);
-
-app.param('user_id', usersController.user_by_id);
-
+app.route('/userpublic')
+    .get(usersController.userPublic);
 
  };

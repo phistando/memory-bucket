@@ -9,7 +9,8 @@ var express = require('express'),
     ejsLayouts = require('express-ejs-layouts'),
     session = require('express-session'),
     passport = require('passport'),
-    flash = require('connect-flash');
+    flash = require('connect-flash'),
+    path = require('path');
 
 
 
@@ -58,8 +59,10 @@ module.exports = function() {
   app.set('views', './app/views');
   app.set('view engine', 'ejs');
   app.use(expressLayouts);
-  app.use(express.static(__dirname + '/public'));
-  app.use(express.static('./public'));
+
+  //set the location of the public folder
+ //from config folder go up one level and link to /app/public
+ app.use(express.static(path.join(__dirname + '/../app/public')));
 
   require('./passport')(passport);
 
