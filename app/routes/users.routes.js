@@ -38,8 +38,8 @@ app.route("/logout")
   .get(usersController.getLogout);
 
 
-// app.route("/userhomepage")
-//   .get(authenticatedUser, usersController.userHomePage);
+// app.route("/userbucketpage")
+//   .get(authenticatedUser, usersController.userBucketPage);
 
 
 app.route('/:user_id')

@@ -2,9 +2,9 @@ var User = require('mongoose').model('User'),
     passport = require("passport");
 
 
-//Get /userhomepage
-// function userHomePage(req, res) {
-//   res.render('user/userHomePage', { message: req.flash('errorMessage') });
+//Get /userbucketpage
+// function userBucketPage(req, res) {
+//   res.render('user/userBucketPage', { message: req.flash('errorMessage') });
 // }
 
 
@@ -80,7 +80,7 @@ module.exports = {
   getSignup: getSignup,
   postSignup: postSignup,
   getLogout: getLogout,
-  // userHomePage: userHomePage
+  // userBucketPage: userBucketPage
   showUserBucket: showUserBucket,
   user_by_id: user_by_id
 };
