@@ -24,6 +24,12 @@ module.exports = function(app) {
   }
 
   app.route("/newphoto")
-    .get(authenticatedUser, photosController.getAddPhoto);
+    .get(authenticatedUser, photosController.getAddPhoto)
+    .post(authenticatedUser, photosController.postAddPhoto);
+
+  app.route("/view-edit-photo")
+    .get(authenticatedUser, photosController.getViewPhoto)
+    .put(authenticatedUser, photosController.putEditPhoto);
+    //need to add delete?
 
  };

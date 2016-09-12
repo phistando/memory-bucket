@@ -10,9 +10,25 @@ function getAddPhoto(req, res) {
 }
 
 //Post /addphoto
+function postAddPhoto(req, res) {
+}
+
+//Get /view-edit-photo
+function getViewPhoto(req, res) {
+  res.render('photo/show', { message: req.flash('errorMessage') });
+}
+
+//Put /view-edit-photo
+function putEditPhoto(req, res) {
+}
+
 
 
 module.exports = {
 
-  getAddPhoto: getAddPhoto
+  getAddPhoto: getAddPhoto,
+  postAddPhoto: postAddPhoto,
+  getViewPhoto: getViewPhoto,
+  putEditPhoto: putEditPhoto
+
 }
