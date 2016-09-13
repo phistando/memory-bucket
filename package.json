@@ -10,8 +10,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "aws-sdk": "2.x",
     "bcrypt-nodejs": "latest",
     "body-parser": "^1.15.2",
+    "compression": "^1.6.2",
     "connect-flash": "~0.1.1",
     "cookie-parser": "~1.0.0",
     "ejs": "^2.5.1",
@@ -24,8 +26,7 @@
     "passport": "~0.1.17",
     "passport-local": "~0.1.6",
     "path": "^0.12.7",
-    "request": "^2.74.0",
-    "aws-sdk": "2.x"
+    "request": "^2.74.0"
   },
   "devDependencies": {
     "express-session": "^1.14.0",
