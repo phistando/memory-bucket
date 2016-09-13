@@ -1,0 +1,5 @@
+{
+	"undefined": "localhost/memorybucket",
+	"dev": "localhost/memorybucket",
+	"prod": "localhost/memorybucket"
+}

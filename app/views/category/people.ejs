@@ -41,3 +41,10 @@
   <h3>People photos</h3>
 </div>
 <h4>show all people photo url</h4>
+
+<% for(var i=0; i<photos.length; i++) { %>
+
+   <a href="/view-edit-photo/<%= photos[i]._id %>">
+    <img style="border:1px solid gray;width:300px;height:250px;" src='<%= photos[i].photo_url %>'></a>
+
+<% } %>

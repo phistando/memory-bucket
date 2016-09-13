@@ -92,6 +92,9 @@ function postPhotoDetails(req, res) {
     new_photo.user_id = req.user._id;
     new_photo.category_id = category[0]._id;
 
+
+
+
     new_photo.save(function(err, photo) {
       if (err) res.render('photo/new', { message: req.flash('errorMessage') });
       res.render('photo/show', { message: req.flash('Saved new photo'), photo: photo, user: req.user });

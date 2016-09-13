@@ -5,46 +5,90 @@ var User = require('mongoose').model('User'),
 
     // GET /events
     function getEvents(req, res) {
-      res.render('category/events', { message: req.flash('errorMessage') });
+
+      Category.findOne({category_type: 'Events'},
+      function (err, category) {
+        if (err) res.render("/profile", {message:
+        req.flash('errorMessage')});
+
+        Photo.find({category_id: category}, function (err, photos) {
+          res.render("category/events", {message:
+          req.flash('errorMessage'), user: req.user, photos: photos});
+
+        });
+      });
     }
 
     // GET /food
     function getFood(req, res) {
-      res.render('category/food', { message: req.flash('errorMessage') });
+
+      Category.findOne({category_type: 'Food'},
+      function (err, category) {
+        if (err) res.render("/profile", {message:
+        req.flash('errorMessage')});
+
+        Photo.find({category_id: category}, function (err, photos) {
+          res.render("category/food", {message:
+          req.flash('errorMessage'), user: req.user, photos: photos});
+
+        });
+      });
     }
 
     // GET /general
     function getGeneral(req, res) {
-      res.render('category/general', { message: req.flash('errorMessage') });
+
+      Photo.find()
+        .exec(function (err, photos) {
+          res.render('category/general', { message: req.flash('errorMessage'), user: req.user, photos: photos});
+        });
+
     }
 
     // GET /people
     function getPeople(req, res) {
-      res.render('category/people', { message: req.flash('errorMessage') });
+
+    Category.findOne({category_type: 'People'},
+      function (err, category) {
+        if (err) res.render("/profile", {message:
+        req.flash('errorMessage')});
+
+        Photo.find({category_id: category}, function (err, photos) {
+          res.render("category/people", {message:
+          req.flash('errorMessage'), user: req.user, photos: photos});
+
+        });
+      });
+
     }
 
     // GET /places
     function getPlaces(req, res) {
-      Photo.find({category_id: "57d65ea89f8245579c91cc8c"})
-      .exec(function(err, photos){
-        res.render('category/places', { message: req.flash('erroMessage'), category: req.category,  photos: photos});
+
+      Category.findOne({category_type: 'Places'}, function (err, category) {
+        if (err) res.render("/profile", {message: req.flash('errorMessage')});
+
+        Photo.find({category_id: category}, function (err, photos) {
+          res.render("category/places", {message: req.flash('errorMessage'), user: req.user, photos: photos});
+        });
       });
-
-
-      // res.render('category/places', { message: req.flash('errorMessage') });
     }
 
     // GET /random
     function getRandom(req, res) {
 
-      Photo.find({category_id: "57d65f1e9f8245579c91cc90"})
-      .exec(function(err, photos){
-        res.render('category/random', { message: req.flash('erroMessage'), category: req.category,  photos: photos});
+      Category.findOne({category_type: 'Random'},
+      function (err, category) {
+        if (err) res.render("/profile", {message:
+        req.flash('errorMessage')});
+
+        Photo.find({category_id: category}, function (err, photos) {
+          res.render("category/random", {message:
+          req.flash('errorMessage'), user: req.user, photos: photos});
+
+        });
       });
-
-
-      // res.render('category/random', { message: req.flash('errorMessage') });
-    }
+     }
 
 
     module.exports = {
