@@ -10,15 +10,15 @@ var CommentSchema = new Schema({
     trim: true
   },
 
-  user_id: [{
+  user_id: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
-  }],
+  },
 
-  photo_id: [{
+  photo_id: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Photo'
-  }]
+  }
 });
 
 CommentSchema.set('timestamps', {});

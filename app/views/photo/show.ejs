@@ -1,3 +1,84 @@
+<style>
+
+.photo-content {
+  float: left;
+}
+
+.photo-comment {
+  float: right;
+}
+
+.detailBox {
+    width:320px;
+    border:1px solid #bbb;
+    margin:50px;
+}
+.titleBox {
+    background-color:#fdfdfd;
+    padding:10px;
+}
+.titleBox label{
+  color:#444;
+  margin:0;
+  display:inline-block;
+}
+
+.commentBox {
+    padding:10px;
+    border-top:1px dotted #bbb;
+}
+.commentBox .form-group:first-child, .actionBox .form-group:first-child {
+    width:80%;
+}
+.commentBox .form-group:nth-child(2), .actionBox .form-group:nth-child(2) {
+    width:100%;
+}
+.actionBox .form-group * {
+    width:100%;
+}
+.taskDescription {
+    margin-top:10px 0;
+}
+.commentList {
+    padding:0;
+    list-style:none;
+    max-height:200px;
+    overflow:auto;
+}
+.commentList li {
+    margin:0;
+    margin-top:10px;
+}
+.commentList li > div {
+    display:table-cell;
+}
+.commentUser {
+    width:30px;
+    margin-right:5px;
+    height:100%;
+    float:left;
+    font-weight: bold;
+}
+
+.commentText p {
+    margin:0;
+}
+.sub-text {
+    color:#aaa;
+    font-family:verdana;
+    font-size:11px;
+}
+.actionBox {
+    border-top:1px dotted #bbb;
+    padding:10px;
+}
+
+#addBtn {
+  width: 20%;
+}
+
+</style>
+
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -38,10 +119,8 @@
   </div>
 </nav>
 
-
+<div class="photo-content">
 <h2>Photo content</h2>
-<!-- <h4>photo url</h4> -->
-
 
 <img style="border:1px solid gray;width:500px;" src='<%= photo.photo_url %>'>
 
@@ -50,7 +129,45 @@
 
 <h4>Owner:</h4>
 <%= user.username %>
+</div>
 
-<!-- <h4>view photo option</h4>
-<h4>view photo comment</h4>
-<h4>insert photo comment</h4> -->
+
+
+
+
+<div class="photo-comment">
+
+<div class="detailBox">
+    <div class="titleBox">
+      <label>Comment Box</label>
+    </div>
+    <div class="actionBox">
+      <% if(typeof comments != 'undefined'){ %>
+        <ul class="commentList">
+            <% for(var i=0; i<comments.length; i++) { %>
+            <li>
+                <div class="commentUser">
+                    <%= comments[i].user_id.username %>:
+                </div>
+                <br>
+                <div class="commentText">
+                    <%= comments[i].comment_content %>
+                </div>
+            </li>
+          <% } %>
+        </ul>
+      <% } %>
+
+        <form method="POST" action="/view-edit-photo/:photo_id">
+          <input class="form-control" type="hidden" name="photo_id" id="photo_id" value="<%=photo._id %>" >
+            <div class="form-group">
+              <textarea class="form-control" name="comment_content" rows="4" cols="50"></textarea>
+            </div>
+            <div class="form-group" id="addBtn">
+                <input class="btn btn-default" type="submit" value="Add">
+            </div>
+        </form>
+
+    </div>
+</div>
+</div>

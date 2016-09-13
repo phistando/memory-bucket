@@ -1,5 +1,6 @@
 var User = require('mongoose').model('User'),
     Photo = require('mongoose').model('Photo'),
+    Comment = require('mongoose').model('Comment'),
     Category = require('mongoose').model('Category'),
     passport = require("passport"),
     aws = require('aws-sdk');
@@ -17,8 +18,13 @@ function getViewPhoto(req, res) {
 console.log('photoid' + req.params.photo_id);
 
   Photo.findById(req.params.photo_id, function (err, photo) {
-      res.render('photo/show', {message: req.flash('errorMessage'), user: req.user, photo: photo});
-
+    Comment.find({photo_id: req.params.photo_id  })
+      .populate('user_id')
+      .exec(
+        function(err, comments){
+          res.render('photo/show', { message:
+         req.flash('Comment posted successfully'), comments: comments, photo:photo, user: req.user });
+       });
   });
 
 
