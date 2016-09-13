@@ -57,13 +57,17 @@ body {color: green;}
           <!-- <strong>password</strong>: <%= user.password %> -->
       </p>
     </div>
+    <a href="/newphoto" class="btn btn-info" role="button">Add photo</a>
   </div>
-</div>
-<!-- Logged in user info-->
 
-<div class="jumbotron text-center" id="userFotos">
-  <h3>User photos</h3>
 </div>
+
 <h4>show all user photo url</h4>
 
-<a href="/newphoto" class="btn btn-info" role="button">Add new photo</a>
+<% for(var i=0; i<photos.length; i++) { %>
+
+    <a href="/view-edit-photo/<%= photos[i]._id %>">
+     <img style="border:1px solid gray;width:270px;height:270;" src='<%= photos[i].photo_url %>'></a>
+
+
+<% } %>

@@ -3,9 +3,7 @@ var mongoose = require('mongoose'),
 
 var CategorySchema = new Schema ({
   category_type: {
-    type: String,
-    enum: ['General', 'Places', 'Food', 'People', 'Events', 'Random'],
-    default: 'General'
+    type: String
   }
 });
 

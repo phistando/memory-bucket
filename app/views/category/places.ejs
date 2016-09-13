@@ -37,7 +37,15 @@
   </div>
 </nav>
 
-<div class="jumbotron text-center" id="userFotos">
+<!-- <div class="jumbotron text-center" id="userFotos">
   <h3>Places photos</h3>
-</div>
+</div> -->
 <h4>show all places photo url</h4>
+
+
+<% for(var i=0; i<photos.length; i++) { %>
+
+   <a href="/view-edit-photo/<%= photos[i]._id %>">
+    <img style="border:1px solid gray;width:300px;" src='<%= photos[i].photo_url %>'></a>
+
+<% } %>

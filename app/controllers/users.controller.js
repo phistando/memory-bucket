@@ -1,4 +1,5 @@
 var User = require('mongoose').model('User'),
+    Photo = require('mongoose').model('Photo'),
     passport = require("passport");
 
 
@@ -7,7 +8,12 @@ var User = require('mongoose').model('User'),
 //Get /profile
 function profile(req, res) {
   console.log('req.user: ' + req.user);
-  res.render('user/profile', { message: req.flash('erroMessage'), user: req.user  });
+  Photo.find({user_id: req.user._id})
+    .populate('category_id')
+    .exec(function(err, photos){
+      res.render('user/profile', { message: req.flash('erroMessage'), user: req.user,  photos: photos});
+    });
+
 }
 
 //Get /userpublic

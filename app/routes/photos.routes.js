@@ -23,11 +23,15 @@ module.exports = function(app) {
     return res.redirect('/');
   }
 
+  app.route("/sign-s3")
+  .get(authenticatedUser, photosController.getSignS3);
+
+
   app.route("/newphoto")
     .get(authenticatedUser, photosController.getAddPhoto)
-    .post(authenticatedUser, photosController.postAddPhoto);
+    .post(authenticatedUser, photosController.postPhotoDetails);
 
-  app.route("/view-edit-photo")
+  app.route("/view-edit-photo/:photo_id")
     .get(authenticatedUser, photosController.getViewPhoto)
     .put(authenticatedUser, photosController.putEditPhoto);
     //need to add delete?

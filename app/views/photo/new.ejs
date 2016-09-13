@@ -39,15 +39,20 @@
 </nav>
 
 
-<h2>add new photo</h2>
+<h2>Add new photo</h2>
 
 <div class="jumbotron container-fluid">
-<form method="post" action="/signup">
 
-  <div class="form-group">
-    <label for="photo_url">photo upload</label>
-    <input class="form-control" type="text" name="photo_url" id="photo_url">
-  </div>
+
+  <label for="photo_url">Photo upload</label>
+  <input type="file" id="file-input">
+  <p id="status">Please select a file</p>
+  <img style="border:1px solid gray;width:300px;"  id="preview" src="/images/default.png">
+
+
+
+  <form method="POST" action="/newphoto">
+      <input type="hidden" id="photo_url" name="photo_url" value="/images/default.png">
 
 
   <div class="form-group">
@@ -55,16 +60,93 @@
     <input class="form-control" type="text" name="caption" id="caption">
   </div>
 
+
   <div class="form-group">
-    <label for="category">Category</label>
-    <input class="form-control" type="text" name="category" id="category">
+    <label for="category">Category</label><br>
+    <select name="category_type" id="category">
+    <option value="Random">Random</option>
+    <option value="Places">Places</option>
+    <option value="Food">Food</option>
+    <option value="People">People</option>
+    <option value="Events">Event</option>
+  </select>
   </div>
 
   <div class="form-group">
-    <label for="view_option">Public View</label>
-    <input class="form-control" type="text" name="view_option" id="view_option">
-  </div>
+    <label for="view_option">View</label><br>
+    <select name="View" id="view">
+    <option value="Yes">Public</option>
+    <option value="No">Private</option>
+  </select>
+</div><br>
 
-  <input class="btn btn-default" type="submit" value="post photo">
+  <input class="btn btn-default" type="submit" value="Post photo">
 </form>
-</div>
+
+
+<script>
+
+    /*
+      Function to carry out the actual PUT request to S3 using the signed request from the app.
+    */
+    function uploadFile(file, signedRequest, url){
+      const xhr = new XMLHttpRequest();
+      xhr.open('PUT', signedRequest);
+      xhr.onreadystatechange = () => {
+        if(xhr.readyState === 4){
+          if(xhr.status === 200){
+            document.getElementById('preview').src = url;
+            document.getElementById('photo_url').value = url;
+          }
+          else{
+            alert('Could not upload file.');
+          }
+        }
+      };
+      xhr.send(file);
+    }
+
+    /*
+      Function to get the temporary signed request from the app.
+      If request successful, continue to upload the file using this signed
+      request.
+    */
+    function getSignedRequest(file){
+      const xhr = new XMLHttpRequest();
+      xhr.open('GET', `/sign-s3?file-name=${file.name}&file-type=${file.type}`);
+      xhr.onreadystatechange = () => {
+        if(xhr.readyState === 4){
+          if(xhr.status === 200){
+            const response = JSON.parse(xhr.responseText);
+            uploadFile(file, response.signedRequest, response.url);
+          }
+          else{
+            alert('Could not get signed URL.');
+          }
+        }
+      };
+      xhr.send();
+    }
+
+    /*
+     Function called when file input updated. If there is a file selected, then
+     start upload procedure by asking for a signed request from the app.
+    */
+    function initUpload(){
+      const files = document.getElementById('file-input').files;
+      const file = files[0];
+
+      if(file == null){
+        return alert('No file selected.');
+      }
+      getSignedRequest(file);
+    }
+
+    /*
+     Bind listeners when the page loads.
+    */
+    (() => {
+        document.getElementById('file-input').onchange = initUpload;
+    })();
+
+    </script>

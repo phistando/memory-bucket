@@ -25,12 +25,25 @@ var User = require('mongoose').model('User'),
 
     // GET /places
     function getPlaces(req, res) {
-      res.render('category/places', { message: req.flash('errorMessage') });
+      Photo.find({category_id: "57d65ea89f8245579c91cc8c"})
+      .exec(function(err, photos){
+        res.render('category/places', { message: req.flash('erroMessage'), category: req.category,  photos: photos});
+      });
+
+
+      // res.render('category/places', { message: req.flash('errorMessage') });
     }
 
     // GET /random
     function getRandom(req, res) {
-      res.render('category/random', { message: req.flash('errorMessage') });
+
+      Photo.find({category_id: "57d65f1e9f8245579c91cc90"})
+      .exec(function(err, photos){
+        res.render('category/random', { message: req.flash('erroMessage'), category: req.category,  photos: photos});
+      });
+
+
+      // res.render('category/random', { message: req.flash('errorMessage') });
     }
 
 

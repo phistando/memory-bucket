@@ -19,12 +19,12 @@
 
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-picture"></span> Photos <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">General</a></li>
-            <li><a href="#">Places</a></li>
-            <li><a href="#">Food</a></li>
-            <li><a href="#">People</a></li>
-            <li><a href="#">Events</a></li>
-            <li><a href="#">Random</a></li>
+            <li><a href="/general">General</a></li>
+            <li><a href="/places">Places</a></li>
+            <li><a href="/food">Food</a></li>
+            <li><a href="/people">People</a></li>
+            <li><a href="/events">Events</a></li>
+            <li><a href="/random">Random</a></li>
           </ul>
         </li>
       </ul>
@@ -40,10 +40,17 @@
 
 
 <h2>Photo content</h2>
-<h4>photo url</h4>
-<h4>photo category</h4>
-<h4>photo owner/user</h4>
-<h4>delete photo option</h4>
-<h4>view photo option</h4>
+<!-- <h4>photo url</h4> -->
+
+
+<img style="border:1px solid gray;width:500px;" src='<%= photo.photo_url %>'>
+
+<h4>Caption:</h4>
+<%= photo.caption %>
+
+<h4>Owner:</h4>
+<%= user.username %>
+
+<!-- <h4>view photo option</h4>
 <h4>view photo comment</h4>
-<h4>insert photo comment</h4>
+<h4>insert photo comment</h4> -->

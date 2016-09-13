@@ -16,20 +16,20 @@ var mongoose = require('mongoose'),
 
       view_option:
       {
-        type: Boolean, default: false
+        type: Boolean, default: true
       },
 
       user_id:
-      [{
+      {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
-      }],
+      },
 
       category_id:
-      [{
+      {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Category'
-      }]
+      }
   });
 
 PhotoSchema.set('timestamps', {});
