@@ -24,7 +24,7 @@ module.exports = function(app) {
   }
 
   app.route("/sign-s3")
-  .get(authenticatedUser, photosController.getSignS3);
+    .get(authenticatedUser, photosController.getSignS3);
 
 
   app.route("/newphoto")
@@ -32,8 +32,8 @@ module.exports = function(app) {
     .post(authenticatedUser, photosController.postPhotoDetails);
 
   app.route("/view-edit-photo/:photo_id")
-    .get(authenticatedUser, photosController.getViewPhoto)
-    .put(authenticatedUser, photosController.putEditPhoto);
-    //need to add delete?
+    .delete(authenticatedUser, photosController.deletePhoto)
+    .get(authenticatedUser, photosController.getViewPhoto);
+
 
  };

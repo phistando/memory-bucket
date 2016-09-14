@@ -1,3 +1,9 @@
+<style>
+
+.well {display: block;}
+
+</style>
+
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -8,7 +14,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/userpublic">Memorybucket</a>
+      <a class="navbar-brand" href="/profile">Memorybucket</a>
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -37,37 +43,32 @@
   </div>
 </nav>
 
-<style>
-body {color: green;}
-</style>
 
-<h1> My bucket </h1>
 
-<!-- Logged in user info-->
-<div class="row">
+<!-- <div class="row"> -->
 
   <!-- LOCAL INFORMATION -->
   <div class="col-sm-6">
-    <div class="well">
-      <h3><span class="fa fa-user"></span>Logged in user</h3>
+    <div>
+      <h2><span class="fa fa-user"></span>My profile</h2>
       <p>
           <!-- <strong>id</strong>: <%= user._id %><br> -->
           <strong>username</strong>: <%= user.username %><br>
           <strong>email</strong>: <%= user.email %><br>
           <!-- <strong>password</strong>: <%= user.password %> -->
       </p>
-    </div>
-    <a href="/newphoto" class="btn btn-info" role="button">Add photo</a>
-  </div>
-
 </div>
 
-<h4>show all user photo url</h4>
+<div class="row">
 
+<h2><span class="fa fa-user"></span>My bucket</h2>
 <% for(var i=0; i<photos.length; i++) { %>
 
     <a href="/view-edit-photo/<%= photos[i]._id %>">
      <img style="border:1px solid gray;width:270px;height:270;" src='<%= photos[i].photo_url %>'></a>
 
-
 <% } %>
+</div>
+<br>
+<a href="/newphoto" class="btn btn-info" role="button">Add photo</a>
+</div>

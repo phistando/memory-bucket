@@ -29,11 +29,11 @@ module.exports = function() {
   }));
 
   app.use(bodyParser.json());
-  app.use(methodOverride());
   app.use(cookieParser());
 
   app.use(ejsLayouts);
 
+  app.use(methodOverride('_method'));
   // use express.session() before passport.session() to ensure that the login session is restored in the correct order
   // Configure the 'session' middleware
   app.use(session({

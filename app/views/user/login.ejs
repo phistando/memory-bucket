@@ -1,3 +1,5 @@
+
+
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -12,21 +14,6 @@
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-
-        <li class="dropdown">
-
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-picture"></span> Photos <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="/general">General</a></li>
-            <li><a href="/places">Places</a></li>
-            <li><a href="/food">Food</a></li>
-            <li><a href="/people">People</a></li>
-            <li><a href="/events">Events</a></li>
-            <li><a href="/random">Random</a></li>
-          </ul>
-        </li>
-      </ul>
 
       <ul class="nav navbar-nav navbar-right">
         <li><a href="/signup"><span class="glyphicon glyphicon-user"></span> signup </a></li>
@@ -41,7 +28,7 @@
 <% if (message.length > 0) { %>
   <div class="alert alert-danger"><%= message %></div>
 <% } %>
-<div class="jumbotron container-fluid">
+<div style="background:transparent !important" class="jumbotron container-fluid">
 
 
 <form method="post" action="/login">

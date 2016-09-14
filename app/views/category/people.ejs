@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/userpublic">Memorybucket</a>
+      <a class="navbar-brand" href="/profile">Memorybucket</a>
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -37,14 +37,13 @@
   </div>
 </nav>
 
-<div class="jumbotron text-center" id="userFotos">
-  <h3>People photos</h3>
+<div style="background:transparent !important" class="jumbotron text-center" id="userFotos">
+  <h3>People</h3>
 </div>
-<h4>show all people photo url</h4>
 
 <% for(var i=0; i<photos.length; i++) { %>
 
    <a href="/view-edit-photo/<%= photos[i]._id %>">
-    <img style="border:1px solid gray;width:300px;height:250px;" src='<%= photos[i].photo_url %>'></a>
+    <img style="border:1px solid gray;width:280px;height:250px;" src='<%= photos[i].photo_url %>'></a>
 
 <% } %>
