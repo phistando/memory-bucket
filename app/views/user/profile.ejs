@@ -1,8 +1,4 @@
-<style>
 
-.well {display: block;}
-
-</style>
 
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
@@ -44,11 +40,8 @@
 </nav>
 
 
-
-<!-- <div class="row"> -->
-
   <!-- LOCAL INFORMATION -->
-  <div class="col-sm-6">
+  <div class="container">
     <div>
       <h2><span class="fa fa-user"></span>My profile</h2>
       <p>
@@ -65,10 +58,11 @@
 <% for(var i=0; i<photos.length; i++) { %>
 
     <a href="/view-edit-photo/<%= photos[i]._id %>">
-     <img style="border:1px solid gray;width:270px;height:270;" src='<%= photos[i].photo_url %>'></a>
+    <img style="border:1px solid gray;width:270px;height:220px;" src='<%= photos[i].photo_url %>'></a>
 
 <% } %>
 </div>
+
 <br>
 <a href="/newphoto" class="btn btn-info" role="button">Add photo</a>
 </div>
