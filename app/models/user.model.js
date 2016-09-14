@@ -7,23 +7,18 @@ var userSchema = new Schema ({
 
   username: {
     type: String
-    // ,
-    // trim: true,
-    // required: [true, 'Please fill in your username']
   },
 
   email: {
-    type: String
-    // ,
-    // unique: true,
-    // required: [true, 'Email is required'],
+    type: String,
+    unique: true,
+    required: [true, 'Email is required']
     // match: [/.+\@.+\..+/, 'Email is invalid']
   },
 
   password: {
-    type: String
-    // ,
-    // required: [true, 'Password is required'],
+    type: String,
+    required: [true, 'Password is required']
     // validate: [
     //   function (password) {
     //     return password.length >= 6;
