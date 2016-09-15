@@ -41,7 +41,5 @@ app.route("/logout")
 app.route('/profile')
     .get(usersController.profile);
 
-app.route('/userpublic')
-    .get(usersController.userPublic);
 
  };

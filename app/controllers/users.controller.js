@@ -16,11 +16,6 @@ function profile(req, res) {
 
 }
 
-//Get /userpublic
-function userPublic(req, res) {
-  res.render('user/userpublic', { message: req.flash('erroMessage'), user: req.user  });
-}
-
 
 // GET /signup
 function getSignup(req, res) {
@@ -68,6 +63,5 @@ module.exports = {
   getSignup: getSignup,
   postSignup: postSignup,
   getLogout: getLogout,
-  profile: profile,
-  userPublic: userPublic
+  profile: profile
 };
